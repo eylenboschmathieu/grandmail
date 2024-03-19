@@ -1,0 +1,24 @@
+## Interface: 100100
+## Title: GrandMail
+## Notes: To serve all your mailing needs.
+## Author: Krozu
+## Version: 2.0
+## SavedVariables: KROZU_GRANDMAIL_DB
+## AddonCompartmentFunc: GrandMail_OnAddonCompartmentClick
+## IconTexture: 136459
+
+lib/Mixins.lua
+lib/WidgetPool.lua
+
+Locales/enUS.lua
+
+templates/Krozu_RangeScrollBar.xml
+templates/Krozu_ScrollFrame.xml
+
+core.lua
+MasterFrame.lua
+InfoFrame.lua
+CharactersFrame.lua
+OrdersFrame.lua
+Entries.lua
+SendMail.lua

@@ -1,0 +1,108 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML/UI.xsd">
+	<Script file="Krozu_ScrollFrame.lua"/>
+	
+	<Button name="Krozu_ScrollButton" virtual="true" hidden="false" inherits="BackdropTemplate">
+		<Size x="16" y="16"/>
+		
+		<Scripts>
+			<OnLoad function="Krozu_ScrollFrameScrollButton_OnLoad"/>
+			<OnEnter function="Krozu_ScrollFrameScrollButton_OnEnter"/>
+			<OnLeave function="Krozu_ScrollFrameScrollButton_OnLeave"/>
+			<OnDisable function="Krozu_ScrollFrameScrollButton_OnDisable"/>
+			<OnEnable function="Krozu_ScrollFrameScrollButton_OnEnable"/>
+		</Scripts>
+	</Button>
+	
+	<Frame name="Krozu_Scrollframe" virtual="true" hidden="false" inherits="BackdropTemplate" mixin="Krozu_ScrollFrame_Mixin">
+		<Frames>
+			<ScrollFrame parentKey="ScrollFrame" inherits="BackdropTemplate" >
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+					<Anchor point="BOTTOMRIGHT" relativeKey="$parent" x="-16" y="0"/>
+				</Anchors>
+				
+				<ScrollChild>
+					<Frame parentKey="Scrollchild" inherits="BackdropTemplate" />
+				</ScrollChild>
+				
+				<Frames>
+					<Slider parentKey="ScrollBar" obeyStepOnDrag="true" inherits="BackdropTemplate">
+						<Size x="16"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="0" y="-17"/>
+							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="0" y="17"/>
+						</Anchors>
+						
+						<ThumbTexture parentKey="ThumbTexture" file="Interface\BUTTONS\WHITE8x8">
+							<Size x="14" y="14"/>
+						</ThumbTexture>
+						
+						<Frames>
+							<Button parentKey="ScrollUpButton" inherits="Krozu_ScrollButton">
+								<Anchors>
+									<Anchor point="BOTTOM" relativePoint="TOP" y="1"/>
+								</Anchors>
+								
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture parentKey="tex" file="Interface\Buttons\SquareButtonTextures">
+											<Size x="12" y="14"/>
+											<Anchors>
+												<Anchor point="CENTER" x="0" y="-1"/>
+											</Anchors>
+											
+											<TexCoords left="0.453125" right="0.640625" top="0.015625" bottom="0.203125"/>
+										</Texture>
+									</Layer>
+								</Layers>
+								
+								<Scripts>
+									<OnClick function="UIPanelScrollBarScrollUpButton_OnClick"/>
+								</Scripts>
+							</Button>
+							
+							<Button parentKey="ScrollDownButton" inherits="Krozu_ScrollButton">
+								<Anchors>
+									<Anchor point="TOP" relativePoint="BOTTOM" y="-1"/>
+								</Anchors>
+								
+								<Layers>
+									<Layer level="OVERLAY">
+										<Texture parentKey="tex" file="Interface\Buttons\SquareButtonTextures">
+											<Size x="12" y="14"/>
+											<Anchors>
+												<Anchor point="CENTER" x="0" y="-1"/>
+											</Anchors>
+											
+											<TexCoords left=".453125" right=".640625" top=".203125" bottom=".015625"/>
+										</Texture>
+									</Layer>
+								</Layers>
+								
+								<Scripts>
+									<OnClick function="UIPanelScrollBarScrollDownButton_OnClick"/>
+								</Scripts>
+							</Button>
+						</Frames>
+						
+						<Scripts>
+							<OnLoad function="Krozu_ScrollFrameScrollBar_OnLoad"/>
+							<OnValueChanged function="UIPanelScrollBar_OnValueChanged"/>
+							<OnMinMaxChanged function="Krozu_ScrollFrameScrollBar_OnMinMaxChanged"/>
+						</Scripts>
+					</Slider>
+				</Frames>
+				
+				<Scripts>
+					<OnMouseWheel function="ScrollFrameTemplate_OnMouseWheel"/>
+					<OnVerticalScroll function="ScrollFrame_OnVerticalScroll"/>
+					<OnScrollRangeChanged function="ScrollFrame_OnScrollRangeChanged"/>
+				</Scripts>
+			</ScrollFrame>
+		</Frames>
+		
+		<Scripts>
+			<OnLoad function="Krozu_ScrollFrame_OnLoad"/>
+		</Scripts>
+	</Frame>
+</Ui>

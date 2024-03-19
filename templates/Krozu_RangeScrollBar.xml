@@ -1,0 +1,145 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML\UI.xsd">
+	<Script file="Krozu_RangeScrollBar.lua"/>
+	
+	<Font name="Krozu_Font" font="Interface\AddOns\GrandMail\CONSOLA.ttf" height="16"/>
+	
+	<Frame name="Krozu_RangeScrollBar" virtual="true" hidden="false" mixin="Krozu_RangeScrollBar_Mixin">
+		<Size x="190" y="24"/>
+	</Frame>
+	
+	<Frame name="Krozu_RangeScrollBar_EditBox" virtual="true" hidden="false" inherits="Krozu_RangeScrollBar" mixin="Krozu_RangeScrollBarEditBox_Mixin">
+		<Frames>
+			<Slider parentKey="SliderLow" orientation="HORIZONTAL" obeyStepOnDrag="true" inherits="BackdropTemplate">
+				<Size x="190" y="12"/>
+				<Anchors>
+					<Anchor point="TOP"/>
+				</Anchors>
+				
+				<ThumbTexture parentKey="Thumb" file="Interface\BUTTONS\WHITE8x8">
+					<Size x="16" y="10"/>
+				</ThumbTexture>
+				
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="ThumbExt" file="Interface\BUTTONS\WHITE8x8">
+							<Size x="2" y="12"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged function="Krozu_RangeScrollBarEditBoxLow_OnValueChanged"/>
+				</Scripts>
+			</Slider>
+			
+			<Slider parentKey="SliderHigh" orientation="HORIZONTAL" obeyStepOnDrag="true" inherits="BackdropTemplate">
+				<Size x="190" y="12"/>
+				<Anchors>
+					<Anchor point="BOTTOM"/>
+				</Anchors>
+				
+				<ThumbTexture parentKey="Thumb" file="Interface\BUTTONS\WHITE8x8">
+					<Size x="16" y="10"/>
+				</ThumbTexture>
+				
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="ThumbExt" file="Interface\BUTTONS\WHITE8x8">
+							<Size x="2" y="12"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged function="Krozu_RangeScrollBarEditBoxHigh_OnValueChanged"/>
+				</Scripts>
+			</Slider>
+			
+			<EditBox parentKey="EditBoxLow" font="Krozu_Font" letters="3" autoFocus="false" numeric="true" multiline="false" inherits="BackdropTemplate">
+				<Size x="44" y="20"/>
+				<Anchors>
+					<Anchor point="BOTTOM" relativeKey="$parent.SliderLow" relativePoint="TOP" x="0" y="2"/>
+				</Anchors>
+				<TextInsets left="4" right="4" top="0" bottom="0"/>
+				
+				<Scripts>
+					<OnEnterPressed function="Krozu_RangeScrollBarEditBoxLow_OnEnterPressed"/>
+				</Scripts>
+			</EditBox>
+			
+			<EditBox parentKey="EditBoxHigh" font="Krozu_Font" letters="3" autoFocus="false" numeric="true" multiline="false" inherits="BackdropTemplate">
+				<Size x="44" y="20"/>
+				<Anchors>
+					<Anchor point="TOP" relativeKey="$parent.SliderHigh" relativePoint="BOTTOM" x="0" y="-2"/>
+				</Anchors>
+				<TextInsets left="4" right="4" top="0" bottom="0"/>
+				
+				<Scripts>
+					<OnEnterPressed function="Krozu_RangeScrollBarEditBoxHigh_OnEnterPressed"/>
+				</Scripts>
+			</EditBox>
+		</Frames>
+	</Frame>
+	
+	<Frame name="Krozu_RangeScrollBar_Fontstring" virtual="true" hidden="false" inherits="Krozu_RangeScrollBar" mixin="Krozu_RangeScrollBarFontstring_Mixin">
+		<Frames>
+			<Slider parentKey="SliderLow" orientation="HORIZONTAL" obeyStepOnDrag="true" inherits="BackdropTemplate">
+				<Size x="190" y="12"/>
+				<Anchors>
+					<Anchor point="TOP"/>
+				</Anchors>
+				
+				<ThumbTexture parentKey="Thumb" file="Interface\BUTTONS\WHITE8x8">
+					<Size x="16" y="10"/>
+				</ThumbTexture>
+				
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="ThumbExt" file="Interface\BUTTONS\WHITE8x8">
+							<Size x="2" y="12"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged function="Krozu_RangeScrollBarFontstringLow_OnValueChanged"/>
+				</Scripts>
+			</Slider>
+			
+			<Slider parentKey="SliderHigh" orientation="HORIZONTAL" obeyStepOnDrag="true" inherits="BackdropTemplate">
+				<Size x="190" y="12"/>
+				<Anchors>
+					<Anchor point="BOTTOM"/>
+				</Anchors>
+				
+				<ThumbTexture parentKey="Thumb" file="Interface\BUTTONS\WHITE8x8">
+					<Size x="16" y="10"/>
+				</ThumbTexture>
+				
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture parentKey="ThumbExt" file="Interface\BUTTONS\WHITE8x8">
+							<Size x="2" y="12"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnValueChanged function="Krozu_RangeScrollBarFontstringHigh_OnValueChanged"/>
+				</Scripts>
+			</Slider>
+		</Frames>
+		
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString font="Krozu_Font" parentKey="TextLow" inherits="Krozu_Font">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeKey="$parent.SliderLow" relativePoint="TOPLEFT" x="0" y="8"/>
+					</Anchors>
+				</FontString>
+				
+				<FontString font="Krozu_Font" parentKey="TextHigh" inherits="Krozu_Font">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeKey="$parent.SliderHigh" relativePoint="BOTTOMLEFT" x="0" y="-8"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+</Ui>
